@@ -2,20 +2,20 @@
 
 A blazingly fast QR code restoration library for Python.
 
-[![GitHub Actions Status](https://github.com/weeebdev/python-library-template/workflows/CI/CD/badge.svg)](https://github.com/weeebdev/python-library-template/actions)
-[![Code Coverage](https://codecov.io/gh/weeebdev/Python-library-template/graph/badge.svg?branch=master)](https://codecov.io/gh/weeebdev/Python-library-template?branch=master)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/weeebdev/Python-library-template.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/weeebdev/Python-library-template/latest/files/)
-[![CodeFactor](https://www.codefactor.io/repository/github/weeebdev/Python-library-template/badge)](https://www.codefactor.io/repository/github/weeebdev/Python-library-template)
+[![GitHub Actions Status](https://github.com/weeebdev/qqr/workflows/CI/CD/badge.svg)](https://github.com/weeebdev/qqr/actions)
+[![Code Coverage](https://codecov.io/gh/weeebdev/qqr/graph/badge.svg?branch=master)](https://codecov.io/gh/weeebdev/qqr?branch=master)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/weeebdev/qqr.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/weeebdev/qqr/latest/files/)
+[![CodeFactor](https://www.codefactor.io/repository/github/weeebdev/qqr/badge)](https://www.codefactor.io/repository/github/weeebdev/qqr)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-[![Docs](https://img.shields.io/badge/docs-master-blue.svg)](https://weeebdev.github.io/python-library-template)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/weeebdev/python-library-template/master)
+[![Docs](https://img.shields.io/badge/docs-master-blue.svg)](https://weeebdev.github.io/qqr)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/weeebdev/qqr/master)
 
 <!-- Here qqr should be replaced with your library's name on PyPI  -->
 [![PyPI version](https://badge.fury.io/py/qqr.svg)](https://badge.fury.io/py/qqr)
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/qqr.svg)](https://pypi.org/project/qqr/)
 
-The template library is [`qqr`](https://github.com/weeebdev/Python-library-template/search?q=qqr&unscoped_q=qqr) to make it clear what is needed for replacement
+The template library is [`qqr`](https://github.com/weeebdev/qqr/search?q=qqr&unscoped_q=qqr) to make it clear what is needed for replacement
 
 ## Setting up the template for your library
 
@@ -23,7 +23,7 @@ The template library is [`qqr`](https://github.com/weeebdev/Python-library-templ
 2. Edit the paths to badges in the `README` to match your library's locations
    - Change `libame` to your library's name
    - Change `weeebdev` to your username or org name on GitHub
-   - Change `python-library-template` to your project name on GitHub (probably the same as the library name)
+   - Change `qqr` to your project name on GitHub (probably the same as the library name)
 3. Replace the rest of the `README` contents with your information
 4. Run `git grep "qqr"` to make sure that you have changed all instances of `libame` (it is easy to miss the dotfiles)
 5. Setup accounts with [Codecov](https://codecov.io/), [LGTM](https://lgtm.com/), and [CodeFactor](https://www.codefactor.io/)
@@ -39,4 +39,4 @@ For example, to increment to a new patch release you would simply run
 bumpversion patch
 ```
 
-which given the [`.bumpversion.cfg`](https://github.com/weeebdev/Python-library-template/blob/master/.bumpversion.cfg) makes a new commit that increments the release version by one patch release.
+which given the [`.bumpversion.cfg`](https://github.com/weeebdev/qqr/blob/master/.bumpversion.cfg) makes a new commit that increments the release version by one patch release.
