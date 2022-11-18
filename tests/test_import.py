@@ -1,5 +1,5 @@
-import libname
+import qqr
 
 
 def test_import():
-    assert libname
+    assert qqr

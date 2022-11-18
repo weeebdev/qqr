@@ -1,6 +1,6 @@
 [run]
 branch = True
-source = src/libname
+source = src/qqr
 
 [report]
 exclude_lines =
