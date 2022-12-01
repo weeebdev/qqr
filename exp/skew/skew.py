@@ -1,3 +1,5 @@
+# flake8: noqa
+
 import math
 from PIL import Image
 import numpy as np

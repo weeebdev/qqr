@@ -1,4 +1,4 @@
-#credit: Juan Carlos Niebles and Ranjay Krishna
+# flake8: noqa
 
 import numpy as np
 import pylops
