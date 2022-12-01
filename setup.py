@@ -1,4 +1,6 @@
-from setuptools import setup
+#!/Users/adilakhmetov/miniconda/bin/python3
+
+from setuptools import setup, find_packages
 
 extras_require = {
     "develop": [
@@ -18,4 +20,5 @@ extras_require["complete"] = sorted(set(sum(extras_require.values(), [])))
 setup(
     extras_require=extras_require,
     entry_points={"console_scripts": ["qqr=qqr.commandline:qqr"]},
+    packages=find_packages(),
 )
