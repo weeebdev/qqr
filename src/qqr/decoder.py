@@ -1,3 +1,5 @@
+# flake8: noqa
+
 import time
 from .classifier import Classifier
 from .deblur import Deblur

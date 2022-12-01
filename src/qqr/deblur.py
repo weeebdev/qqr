@@ -1,3 +1,5 @@
+# flake8: noqa
+
 import numpy as np
 import pylops
 from skimage import io
