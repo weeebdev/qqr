@@ -2,7 +2,7 @@
 
 import numpy as np
 import pylops
-from skimage import io
+from skimage import io, util
 import cv2
 from pathlib import Path
 
@@ -86,40 +86,32 @@ def blind(imblur):
     #####################################
     Nz = 300
     Nx = 300
+    imblur = util.img_as_float(imblur)
     imblur = cv2.resize(imblur, dsize=(Nz, Nx), interpolation=cv2.INTER_CUBIC)
     imblur1 = imblur
-
     binar = np.zeros((Nz, Nx))
-
     mean = np.mean(imblur)
-
     for i in range(Nz):
         for j in range(Nx):
             if (imblur[i][j] >= mean):
                 binar[i][j] = 1.
             else:
                 binar[i][j] = 0.
-
     binar, xl, xr, xu, xd = crop_edges(binar)
     imblur = imblur[xl:xr, xu:xd]
-
     Nz, Nx = binar.shape
-
     mean = np.mean(imblur)
-
     for i in range(Nz):
         for j in range(Nx):
             if (imblur[i][j] >= mean):
                 binar[i][j] = 1.
             else:
                 binar[i][j] = 0.
-
     u = 25
     for j in range(Nx):
         if (binar[u][j] == 0):
             xu = j
             break
-
     for i in range(Nz):
         if (binar[i][u] == 0):
             xl = i
@@ -138,11 +130,9 @@ def blind(imblur):
             if (t == 3):
                 xr = i
                 break
-
     finder_blur = imblur[xl:xr, xu:xd]
     finder_clear = io.imread(
-        f"{Path(__file__).parent.absolute()}/clear.png", cv2.IMREAD_GRAYSCALE)
-
+        f"{Path(__file__).parent.absolute()}/clear.png", as_gray=True)
     finder_blur = cv2.resize(finder_blur, dsize=(
         80, 80), interpolation=cv2.INTER_CUBIC)
     finder_clear = cv2.resize(finder_clear, dsize=(
@@ -151,18 +141,14 @@ def blind(imblur):
         finder_blur, None, alpha=0, beta=1, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_32F)
     finder_clear = cv2.normalize(
         finder_clear, None, alpha=0, beta=1, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_32F)
-    # show(finder_clear)
-    # show(finder_blur)
     l = -1000
     for i in range(1, 31, 1):
         for j in range(1, 31, 1):
             h = uniform_disk_kernel(i, j)
             a = gaussian_kernel(i, j)
-
             blur1 = blurry(finder_clear, h)
             blur1 = cv2.normalize(
                 blur1, None, alpha=0, beta=1, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_32F)
-
             y = finder_blur
             xm = np.mean(blur1)
             ym = np.mean(y)
@@ -170,7 +156,6 @@ def blind(imblur):
             sigmax = np.sum((blur1-xm)**2)**0.5
             sigmay = np.sum((y-ym)**2)**0.5
             mse1 = (sigmaxy*4*xm*ym)/((xm**2+ym**2)*(sigmax**2+sigmay**2))
-
             blur2 = blurry(finder_clear, a)
             blur2 = cv2.normalize(
                 blur2, None, alpha=0, beta=1, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_32F)
@@ -180,7 +165,6 @@ def blind(imblur):
             sigmax = np.sum((blur2-xm)**2)**0.5
             sigmay = np.sum((finder_blur-ym)**2)**0.5
             mse2 = (sigmaxy*4*xm*ym)/((xm**2+ym**2)*(sigmax**2+sigmay**2))
-
             if (mse1 < mse2):
                 mse = mse1
             else:
@@ -198,9 +182,9 @@ def blind(imblur):
     for i in range(Nz):
         for j in range(Nx):
             if (imdeblur[i][j] >= 0.52):
-                imdeblur[i][j] = 1.
+                imdeblur[i][j] = 1
             else:
-                imdeblur[i][j] = 0.
+                imdeblur[i][j] = 0
     ######################################
     #        END OF YOUR CODE            #
     ######################################
