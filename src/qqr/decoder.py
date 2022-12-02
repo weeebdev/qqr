@@ -25,7 +25,7 @@ def read_qr_code(img):
         return None
 
 
-def Decoder(filename, verbose, deblurType, saveFile, decode=True):
+def Decoder(filename, verbose=False, deblurType="blind", saveFile=None, decode=True):
     """Decode an image and return the QR code.
 
     Args:
