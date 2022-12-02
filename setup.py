@@ -1,5 +1,6 @@
 #!/Users/adilakhmetov/miniconda/bin/python3
 
+import os
 from setuptools import setup, find_packages
 
 extras_require = {
@@ -17,8 +18,15 @@ extras_require = {
 }
 extras_require["complete"] = sorted(set(sum(extras_require.values(), [])))
 
+lib_folder = os.path.dirname(os.path.realpath(__file__))
+requirement_path = lib_folder + '/requirements.txt'
+install_requires = []  # Here we'll get: ["gunicorn", "docutils>=0.3", "lxml==0.5a7"]
+if os.path.isfile(requirement_path):
+    with open(requirement_path) as f:
+        install_requires = f.read().splitlines()
+
 setup(
     extras_require=extras_require,
     entry_points={"console_scripts": ["qqr=qqr.commandline:qqr"]},
-    packages=find_packages(),
+    install_requires=install_requires
 )
